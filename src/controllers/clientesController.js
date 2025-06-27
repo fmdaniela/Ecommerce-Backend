@@ -1,15 +1,10 @@
 import Cliente from '../models/Cliente.js';
-import Carrito from '../models/Carrito.js';
+
 
 // Obtener todos los clientes
 export const getClientes = async (req, res) => {
   try {
-    const clientes = await Cliente.findAll({
-      include: [{
-        model: Carrito,
-        as: 'carritos' 
-      }]
-    });
+    const clientes = await Cliente.findAll();
     res.status(200).json(clientes);
   } catch (error) {
     console.error("Error al obtener clientes:", error);
@@ -21,12 +16,7 @@ export const getClientes = async (req, res) => {
 export const getClienteById = async (req, res) => {
   try {
     const { id } = req.params;
-    const cliente = await Cliente.findByPk(id, {
-      include: [{
-        model: Carrito,
-        as: 'carritos'
-      }]
-    });
+    const cliente = await Cliente.findByPk(id);
     if (cliente) {
       res.status(200).json(cliente);
     } else {

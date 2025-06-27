@@ -18,8 +18,8 @@ import Resena from './Resena.js';
 
 
 // Cliente 1:N Carrito
-Cliente.hasMany(Carrito, { foreignKey: 'idCliente', as: 'carritos' });
-Carrito.belongsTo(Cliente, { foreignKey: 'idCliente', as: 'cliente' });
+Cliente.hasMany(Carrito, { foreignKey: 'idCliente' });
+Carrito.belongsTo(Cliente, { foreignKey: 'idCliente' });
 
 // Cliente 1:N OrdenCompra
 Cliente.hasMany(OrdenCompra, { foreignKey: 'idCliente' });
